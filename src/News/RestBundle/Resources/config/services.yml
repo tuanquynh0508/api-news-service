@@ -1,0 +1,27 @@
+parameters:
+    # Service parameters
+    api_news.service.article.class: News\RestBundle\Service\ArticleService
+    api_news.service.category.class: News\RestBundle\Service\CategoryService
+    # Repository
+    api_news.repository.article.class: News\RestBundle\Repository\ArticleRepository
+    api_news.repository.category.class: News\RestBundle\Repository\CategoryRepository
+    # Bundle
+    api_news.rest_bundle: NewsRestBundle
+
+services:
+    # Article Services
+    api_news.service.article:
+        class: %api_news.service.article.class%
+        arguments: ['@service_container']
+    # Category Services
+    api_news.service.category:
+        class: %api_news.service.category.class%
+        arguments: ['@service_container']
+
+    # Repositories
+    api_news.repository.article:
+        class: %api_news.repository.article.class%
+        arguments: ["@doctrine.orm.default_entity_manager", %api_news.rest_bundle%]
+    api_news.repository.category:
+        class: %api_news.repository.category.class%
+        arguments: ["@doctrine.orm.default_entity_manager", %api_news.rest_bundle%]

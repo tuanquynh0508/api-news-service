@@ -1,0 +1,12 @@
+article_rest:
+  resource: "@NewsRestBundle/Controller/ArticleController.php"
+  type: rest
+  prefix: /
+  #name_prefix: api_
+
+category_rest:
+  resource: "@NewsRestBundle/Controller/CategoryController.php"
+  type: rest
+  prefix: /
+  #parent: article_rest
+  #name_prefix: api_
